@@ -20,4 +20,4 @@ Jogo_20_perguntas: $(OBJ)
 .PHONY: clean
  
 clean:
-  rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~s
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~s
