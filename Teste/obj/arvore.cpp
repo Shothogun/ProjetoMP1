@@ -16,19 +16,23 @@ void tree::insert(std::string frase_entrada,
                   Opcao opcao_entrada,
                   TipoFrase tipo_entrada)
 {
-  // Se a arvore possuir raiz
+  // Se a arvore é inicializada e o no atual nao é folha vazia
   if(current != NULL)
     insert(frase_entrada, opcao_entrada, tipo_entrada,current);
-  else 
+
+  // Se for uma folha vazia, cria-se um novo node
+  else if(current == root) 
   {
     current = new node;
-    // Copia a frase de entrada para o Node
-    root->frase = frase_entrada;
-    root->tipo = tipo_entrada;
-    root->ind = "0";
-    root->Nao = NULL;
-    root->Sim = NULL;
   }
+
+  // Copia a frase de entrada para o Node
+  current->frase = frase_entrada;
+  current->tipo = tipo_entrada;
+  current->ind = '0';
+  current->Nao = NULL;
+  current->Sim = NULL;
+
 }
  
 void tree::insert(std::string frase_entrada, 
