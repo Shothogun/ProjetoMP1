@@ -4,7 +4,7 @@ using namespace std;
 tree::tree()
 {
   root = NULL;
-  current = root;
+  current = NULL;
 }
  
 tree::~tree()
@@ -16,23 +16,25 @@ void tree::insert(std::string frase_entrada,
                   Opcao opcao_entrada,
                   TipoFrase tipo_entrada)
 {
-  // Se a arvore é inicializada e o no atual nao é folha vazia
+  // Se a arvore é inicializada
   if(current != NULL)
     insert(frase_entrada, opcao_entrada, tipo_entrada,current);
 
-  // Se for uma folha vazia, cria-se um novo node
-  else if(current == root) 
+  // Se for uma arvore nao criada cria-se um novo root
+  else 
   {
-    current = new node;
+    if((current == root))
+    {
+      current = new node;
+    } 
+    // Copia a frase de entrada para o Node
+    current->frase = frase_entrada;
+    current->tipo = tipo_entrada;
+    current->ind = "0";
+    current->Nao = NULL;
+    current->Sim = NULL;
+    root = current;
   }
-
-  // Copia a frase de entrada para o Node
-  current->frase = frase_entrada;
-  current->tipo = tipo_entrada;
-  current->ind = '0';
-  current->Nao = NULL;
-  current->Sim = NULL;
-
 }
  
 void tree::insert(std::string frase_entrada, 
@@ -40,16 +42,68 @@ void tree::insert(std::string frase_entrada,
                   TipoFrase tipo_entrada,
                   node* current)
 {
+  // ----------------------------------------------Se a frase de entrada for um tipo resposta
   if(tipo_entrada == TipoFrase::resposta)
   {
+    /* Se o objeto inserido é alternativa resposta
+      sim da pergunta */
     if(opcao_entrada == Opcao::sim)
     {
-      
+      if (current->Sim != NULL)
+        delete current->Sim;
+      current->Sim = new node;
+      node* resposta = current->Sim;
+      resposta->frase = frase_entrada;
+      resposta->tipo = tipo_entrada;
+      resposta->ind = current->ind + '1';
+      resposta->Nao = NULL;
+      resposta->Sim = NULL;
+    }
+    /*Caso contrario */
+    else
+    {
+      if (current->Nao != NULL)
+        delete current->Nao;
+      current->Nao = new node;
+      node* resposta = current->Nao;
+      resposta->frase = frase_entrada;
+      resposta->tipo = tipo_entrada;
+      resposta->ind = current->ind + '0';
+      resposta->Nao = NULL;
+      resposta->Sim = NULL;
     }
   }
+
+  // ----------------------------------------------Se a frase de entrada for uma pergunta
   else
   {
- 
+    // Se o erro foi na resposta sim
+    if(opcao_entrada == Opcao::sim)
+    {
+      if (current->Sim != NULL)
+        delete current->Sim;
+
+      current->Sim = new node;
+      node* pergunta = current->Sim;
+      pergunta->frase = frase_entrada;
+      pergunta->tipo = tipo_entrada;
+      pergunta->ind = current->ind + '1';
+      pergunta->Nao = NULL;
+      pergunta->Sim = NULL;
+    }
+    else
+    {
+      if (current->Nao != NULL)
+        delete current->Nao;
+
+      current->Nao = new node;
+      node* pergunta = current->Nao;
+      pergunta->frase = frase_entrada;
+      pergunta->tipo = tipo_entrada;
+      pergunta->ind = current->ind + '0';
+      pergunta->Nao = NULL;
+      pergunta->Sim = NULL;
+    }
   }
 }
  
@@ -85,3 +139,7 @@ node* tree::return_current()
   return current;  
 }
  
+std::string tree::return_root_frase()
+{
+  return root->frase;
+}

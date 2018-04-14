@@ -25,6 +25,12 @@ enum class TipoFrase{pergunta,resposta};
     \sa node 
 */
 typedef struct node *child;
+
+/*! \struct node_ponteiro
+    Entidade equivalente ao Node 
+    \sa node 
+*/
+typedef struct node *node_ponteiro;
  
 /*! Entidade tipo node(Nó)
     
@@ -125,18 +131,16 @@ class tree
  
     node* return_root();
     node* return_current();
- 
+    std::string return_root_frase();
+
     /*! Node current(atual)
  
         Indica em qual parte da arvore o jogador
         estara durante o jogo
     */
-    node* current;
-    /*! Node raiz
+    node_ponteiro current;
+
  
-        Indica a primeira pergunta do jogo.
-    */
-    node* root;  
  
   private:
     void insert(std::string frase_entrada, 
@@ -144,6 +148,13 @@ class tree
                 TipoFrase tipo_entrada,
                 node *leaf);
     void destroy_tree(node *leaf);
+
+    
+    /*! Node raiz
+        Indica a primeira pergunta do jogo.
+    */
+    node_ponteiro root;  
+ 
  
 };
  
