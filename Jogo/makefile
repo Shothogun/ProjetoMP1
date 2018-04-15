@@ -12,12 +12,12 @@ _OBJ = Jogo_20_perguntas.o arvore.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
  
 $(ODIR)/%.o: %.c $(DEPS)
-  $(CXX) -c -o $@ $< $(CXXFLAGS)
+	$(CXX) -c -o $@ $< $(CXXFLAGS)
  
 Jogo_20_perguntas: $(OBJ)
-  g++ -o $@ $^ $(CXXFLAGS) $(LIBS)
+	g++ -o $@ $^ $(CXXFLAGS) $(LIBS)
  
 .PHONY: clean
  
 clean:
-  rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~s
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~s

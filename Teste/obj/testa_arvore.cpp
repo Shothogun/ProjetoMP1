@@ -720,3 +720,206 @@ TEST_CASE("Operacoes de inserçoes no inicio", "[arvore]")
   }
   delete t;
 }
+
+TEST_CASE("deletar uma sub-árvore", "[arvore]")
+{
+	tree* t = new tree();
+  t->insert("É um ser vivo?", Opcao::sim, TipoFrase::pergunta);
+  t->insert("cobra", Opcao::sim, TipoFrase::resposta);
+  t->insert("martelo", Opcao::nao, TipoFrase::resposta);
+  REQUIRE(t->return_root_frase() == "É um ser vivo?");
+  REQUIRE(t->current->Sim->frase == "cobra");
+  REQUIRE(t->current->Nao->frase == "martelo");
+
+
+  REQUIRE(t->current->frase == "É um ser vivo?");
+  REQUIRE(t->current->tipo == TipoFrase::pergunta);
+  REQUIRE(t->current->ind == "0");
+
+  std::string resposta_errada1 = t->current->Sim->frase;
+  Opcao escolha_usuario1 = Opcao::sim;
+  std::string resposta_usuario1 = "humano";
+  			
+ 	t->insert("É um mamífero?", Opcao::sim, TipoFrase::pergunta);
+ 	REQUIRE(t->current->Sim->frase == "É um mamífero?");
+ 	REQUIRE(t->current->Sim->tipo == TipoFrase::pergunta);
+ 	REQUIRE(t->current->Sim->ind == "01");
+ 		 		
+ 	t->current = t->current->Sim;
+
+ 	REQUIRE(t->current->frase == "É um mamífero?");
+ 	REQUIRE(t->current->tipo == TipoFrase::pergunta);
+ 	REQUIRE(t->current->ind == "01");
+
+ 	t->insert(resposta_usuario1, escolha_usuario1, TipoFrase::resposta);
+ 	t->insert(resposta_errada1, Opcao::nao,TipoFrase::resposta);
+
+ 	node* correto1 = t->current->Sim;
+ 	node* errado1 = t->current->Nao;
+				
+ 	REQUIRE((correto1->frase) == "humano");
+ 	REQUIRE((correto1->tipo) == TipoFrase::resposta);
+ 	REQUIRE((correto1->ind) == "011");
+
+ 	REQUIRE((errado1->frase) == "cobra");
+ 	REQUIRE((errado1->tipo) == TipoFrase::resposta);
+ 	REQUIRE((errado1->ind) == "010");
+	 	
+	std::string resposta_errada2 = t->current->Sim->frase;
+	Opcao escolha_usuario2 = Opcao::sim;
+	std::string resposta_usuario2 = "zebra";
+	  			
+	t->insert("Ele é quadrúpede?", Opcao::sim, TipoFrase::pergunta);
+ 	REQUIRE(t->current->Sim->frase == "Ele é quadrúpede?");
+ 	REQUIRE(t->current->Sim->tipo == TipoFrase::pergunta);
+ 	REQUIRE(t->current->Sim->ind == "011");
+	 		 		
+ 	t->current = t->current->Sim;
+
+ 	REQUIRE(t->current->frase == "Ele é quadrúpede?");
+ 	REQUIRE(t->current->tipo == TipoFrase::pergunta);
+	REQUIRE(t->current->ind == "011");
+
+ 	t->insert(resposta_usuario2, escolha_usuario2, TipoFrase::resposta);
+	t->insert(resposta_errada2, Opcao::nao,TipoFrase::resposta);
+
+ 	node* correto2 = t->current->Sim;
+ 	node* errado2 = t->current->Nao;
+					
+ 	REQUIRE((correto2->frase) == "zebra");
+ 	REQUIRE((correto2->tipo) == TipoFrase::resposta);
+ 	REQUIRE((correto2->ind) == "0111");
+
+ 	REQUIRE((errado2->frase) == "humano");
+ 	REQUIRE((errado2->tipo) == TipoFrase::resposta);
+ 	REQUIRE((errado2->ind) == "0110");
+
+ 	t->pre_order_printing();
+
+ 	cout << "\n\n";
+
+ 	t->set_current(0);			
+
+ 	t->eliminate(Opcao::sim);
+
+ 	REQUIRE(t->current->Sim == NULL);
+ 	t->pre_order_printing();
+
+ 	delete t;
+}
+
+TEST_CASE("salvar a arvore", "[arvore]")
+{
+	tree* t = new tree();
+  t->insert("É um ser vivo?", Opcao::sim, TipoFrase::pergunta);
+  t->insert("cobra", Opcao::sim, TipoFrase::resposta);
+  t->insert("martelo", Opcao::nao, TipoFrase::resposta);
+  REQUIRE(t->return_root_frase() == "É um ser vivo?");
+  REQUIRE(t->current->Sim->frase == "cobra");
+  REQUIRE(t->current->Nao->frase == "martelo");
+
+
+  REQUIRE(t->current->frase == "É um ser vivo?");
+  REQUIRE(t->current->tipo == TipoFrase::pergunta);
+  REQUIRE(t->current->ind == "0");
+
+  std::string resposta_errada1 = t->current->Sim->frase;
+  Opcao escolha_usuario1 = Opcao::sim;
+  std::string resposta_usuario1 = "humano";
+  			
+ 	t->insert("É um mamífero?", Opcao::sim, TipoFrase::pergunta);
+ 	REQUIRE(t->current->Sim->frase == "É um mamífero?");
+ 	REQUIRE(t->current->Sim->tipo == TipoFrase::pergunta);
+ 	REQUIRE(t->current->Sim->ind == "01");
+ 		 		
+ 	t->current = t->current->Sim;
+
+ 	REQUIRE(t->current->frase == "É um mamífero?");
+ 	REQUIRE(t->current->tipo == TipoFrase::pergunta);
+ 	REQUIRE(t->current->ind == "01");
+
+ 	t->insert(resposta_usuario1, escolha_usuario1, TipoFrase::resposta);
+ 	t->insert(resposta_errada1, Opcao::nao,TipoFrase::resposta);
+
+ 	node* correto1 = t->current->Sim;
+ 	node* errado1 = t->current->Nao;
+				
+ 	REQUIRE((correto1->frase) == "humano");
+ 	REQUIRE((correto1->tipo) == TipoFrase::resposta);
+ 	REQUIRE((correto1->ind) == "011");
+
+ 	REQUIRE((errado1->frase) == "cobra");
+ 	REQUIRE((errado1->tipo) == TipoFrase::resposta);
+ 	REQUIRE((errado1->ind) == "010");
+	 	
+	std::string resposta_errada2 = t->current->Sim->frase;
+	Opcao escolha_usuario2 = Opcao::sim;
+	std::string resposta_usuario2 = "zebra";
+	  			
+	t->insert("Ele é quadrúpede?", Opcao::sim, TipoFrase::pergunta);
+ 	REQUIRE(t->current->Sim->frase == "Ele é quadrúpede?");
+ 	REQUIRE(t->current->Sim->tipo == TipoFrase::pergunta);
+ 	REQUIRE(t->current->Sim->ind == "011");
+	 		 		
+ 	t->current = t->current->Sim;
+
+ 	REQUIRE(t->current->frase == "Ele é quadrúpede?");
+ 	REQUIRE(t->current->tipo == TipoFrase::pergunta);
+	REQUIRE(t->current->ind == "011");
+
+ 	t->insert(resposta_usuario2, escolha_usuario2, TipoFrase::resposta);
+	t->insert(resposta_errada2, Opcao::nao,TipoFrase::resposta);
+
+ 	node* correto2 = t->current->Sim;
+ 	node* errado2 = t->current->Nao;
+					
+ 	REQUIRE((correto2->frase) == "zebra");
+ 	REQUIRE((correto2->tipo) == TipoFrase::resposta);
+ 	REQUIRE((correto2->ind) == "0111");
+
+ 	REQUIRE((errado2->frase) == "humano");
+ 	REQUIRE((errado2->tipo) == TipoFrase::resposta);
+ 	REQUIRE((errado2->ind) == "0110");
+
+ 	char* frase;
+
+ 	frase = "testar.txt";
+
+ 	REQUIRE( t->save_game(frase) == 1);
+
+ 	delete t;
+
+}
+
+TEST_CASE("Decodificar o arquivo em arvore", "[arvore]")
+{
+	int i;
+	std::string line = "0110|resposta|humano";
+	std::string ind;
+	std::string tipo;
+	std::string frase;
+
+	while(line[i] != '|')
+  {
+   ind += line[i];
+   i++;
+  }
+
+  i++;
+  
+  while(line[i] != '|')
+  {
+   tipo += line[i];
+  }
+
+  i++;
+
+  while(line[i] != '\0')
+  {
+   frase += line[i];
+  }
+
+  REQUIRE(ind == "0110");
+  REQUIRE(tipo == "resposta");
+  REQUIRE(frase == "humano");
+}

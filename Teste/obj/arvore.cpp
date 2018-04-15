@@ -107,9 +107,18 @@ void tree::insert(std::string frase_entrada,
   }
 }
  
-void tree::eliminate()
+void tree::eliminate(Opcao opcao_usuario)
 {
-  destroy_tree(current);
+  if(opcao_usuario == Opcao::sim)
+  {
+    destroy_tree(current->Sim);
+    current->Sim = NULL;
+  }
+  else
+  {
+    destroy_tree(current->Nao);
+    current->Nao = NULL;
+  }
 }
 
 void tree::destroy_tree()
@@ -126,6 +135,138 @@ void tree::destroy_tree(node *leaf)
     delete leaf;
   }
 }
+
+int tree::save_game(char* nome_arquivo) //char* nome arquivo -- 
+{
+  node* save = root;
+  if(save != NULL)
+  {
+    ofstream myfile;
+    myfile.open (nome_arquivo);
+
+    int n_ind = (save->ind).length();
+    char* ind = (char*) malloc((n_ind+1)*sizeof(char));
+    strcpy(ind, (save->ind).c_str());
+
+    char* tipo_frase;
+    if(save->tipo == TipoFrase::resposta)
+    {
+      tipo_frase = "resposta";
+    }
+
+    else
+    {
+      tipo_frase = "pergunta";
+    }
+
+    int n_frase = (save->frase).length();
+    char* frase = (char*) malloc((n_frase+1)*sizeof(char));
+    strcpy(frase, (save->frase).c_str());
+
+    myfile << ind<< "|";
+    myfile << tipo_frase << "|";
+    myfile << frase << endl;
+
+    myfile.close();
+    save_game(nome_arquivo, save->Nao);
+    save_game(nome_arquivo, save->Sim);
+
+    free(ind);
+    free(frase);
+
+    return 1;
+  }
+
+  else
+  {
+    return 0;
+  }
+}
+
+void tree::save_game(char* nome_arquivo, node* save)
+{
+   if(save != NULL)
+  {
+    ofstream myfile;
+    myfile.open (nome_arquivo, ios::app);
+
+
+    int n_ind = (save->ind).length();
+    char* ind = (char*) malloc((n_ind+1)*sizeof(char));
+    strcpy(ind, (save->ind).c_str());
+
+    char* tipo_frase;
+    if(save->tipo == TipoFrase::resposta)
+    {
+      tipo_frase = "resposta";
+    }
+
+    else
+    {
+      tipo_frase = "pergunta";
+    }
+
+    int n_frase = (save->frase).length();
+    char* frase = (char*) malloc((n_frase+1)*sizeof(char));
+    strcpy(frase, (save->frase).c_str());
+
+    myfile << ind << "|";
+    myfile << tipo_frase << "|";
+    myfile << frase << endl;
+
+    myfile.close();
+    free(ind);
+    free(frase);
+
+    save_game(nome_arquivo, save->Nao);
+    save_game(nome_arquivo, save->Sim);
+  }
+}
+/*
+tree* ler_arquivo(char* nome_arquivo)
+{
+  tree* t = new tree();
+  std::string line;
+  std::string tipo;
+  std::string frase;
+  ifstream myfile(nome_arquivo);
+
+  if(myfile.is_open())
+  {
+    while( getline (myfile,line) )
+    { 
+
+      int i = 0;
+      while(line[i] != '|')
+      {
+        ind += line[i];
+        i++;
+      }
+      i++;
+      while(line[i] != '|')
+      {
+        tipo += line[i];
+      }
+      i++
+      while(line[i] != '\0')
+      {
+        frase += line[i];
+      }
+
+      decodificar_nodes();
+
+
+    }
+    myfile.close();
+  }
+
+  else
+  {
+    cout << "Unable to open file"; 
+    return NULL;
+  }
+
+}*/
  
 // Test functions
  
@@ -142,4 +283,31 @@ node* tree::return_current()
 std::string tree::return_root_frase()
 {
   return root->frase;
+}
+
+void tree::set_current(int i)
+{
+  if (i == 0)
+    current = root->Sim;
+}
+
+void tree::pre_order_printing()
+{
+  node* show_node = root;
+  if(show_node != NULL)
+  {
+    cout << show_node->frase << endl;
+    pre_order_printing(show_node->Nao);
+    pre_order_printing(show_node->Sim);
+  }
+}
+
+void tree::pre_order_printing(node* show_node)
+{
+  if(show_node != NULL)
+  {
+    cout << show_node->frase << endl;
+    pre_order_printing(show_node->Nao);
+    pre_order_printing(show_node->Sim);
+  } 
 }
