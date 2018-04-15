@@ -30,8 +30,6 @@ int main()
 
 
 
-
-
     free (texto);
   }
  

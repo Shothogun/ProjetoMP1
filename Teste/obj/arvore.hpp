@@ -142,7 +142,17 @@ class tree
     */
     int save_game(char* nome_arquivo);
 
-    //tree* ler_arquivo(char* nome_arquivo);
+    /*! Funcao ler arquivo
+        
+        Ele é uma funcao que lê o arquivo .txt e decodifica suas informações
+        para formar a árvore. Dentro dele, ele chama a função decodifica_nodes.
+        \sa decodifica_nodes()
+    */
+    int ler_arquivo(char* nome_arquivo);
+
+    int decodifica_nodes(std::string ind_entrada,
+                         std::string tipo_entrada,
+                         std::string frase_entrada);
  
     // ----------------------- Test functions-------------------------------// 
  
