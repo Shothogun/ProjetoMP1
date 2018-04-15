@@ -1,7 +1,0 @@
-0|pergunta|É um ser vivo?
-00|resposta|martelo
-01|pergunta|É um mamífero?
-010|resposta|cobra
-011|pergunta|Ele é quadrúpede?
-0110|resposta|humano
-0111|resposta|zebra

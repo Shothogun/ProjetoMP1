@@ -2,7 +2,7 @@
 #include "catch.hpp"
 #include "arvore.hpp"
 using namespace std;
- 
+
 TEST_CASE("Inicializar arvore", "[arvore]")
 {
   tree* t = new tree();
@@ -893,8 +893,9 @@ TEST_CASE("salvar a arvore", "[arvore]")
 
 TEST_CASE("Decodificar o arquivo em arvore", "[arvore]")
 {
-	int i;
-	std::string line = "0110|resposta|humano";
+	int i=0;
+
+	std::string line = "0110|resposta|humano\0";
 	std::string ind;
 	std::string tipo;
 	std::string frase;
@@ -904,22 +905,35 @@ TEST_CASE("Decodificar o arquivo em arvore", "[arvore]")
    ind += line[i];
    i++;
   }
-
-  i++;
   
+  i++;
+  REQUIRE(ind == "0110");
+  REQUIRE(i ==5);
+
   while(line[i] != '|')
   {
    tipo += line[i];
+   i++;
   }
 
   i++;
+  REQUIRE(tipo == "resposta");
 
   while(line[i] != '\0')
   {
    frase += line[i];
+   i++;
   }
 
-  REQUIRE(ind == "0110");
-  REQUIRE(tipo == "resposta");
   REQUIRE(frase == "humano");
+  
+}
+
+TEST_CASE("Ler o arquivo", "[arvore]")
+{
+	tree* outro_jogo = new tree();
+	int flag = outro_jogo->ler_arquivo("testar.txt");
+	REQUIRE(flag == 1);
+
+	outro_jogo->save_game("outro_jogo.txt");
 }

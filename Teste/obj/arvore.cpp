@@ -176,11 +176,6 @@ int tree::save_game(char* nome_arquivo) //char* nome arquivo --
 
     return 1;
   }
-
-  else
-  {
-    return 0;
-  }
 }
 
 void tree::save_game(char* nome_arquivo, node* save)
@@ -225,17 +220,18 @@ void tree::save_game(char* nome_arquivo, node* save)
 
 int tree::ler_arquivo(char* nome_arquivo)
 {
-  std::string line;
-  std::string ind;
-  std::string tipo;
-  std::string frase;
   ifstream myfile(nome_arquivo);
-  int report;
+  int report = 1;
+  std::string line;
 
+  // Decodificador de arquivo
   if(myfile.is_open())
   {
     while( getline (myfile,line) )
     { 
+      std::string ind;
+      std::string tipo;
+      std::string frase;
 
       int i = 0;
       while(line[i] != '|')
@@ -243,7 +239,7 @@ int tree::ler_arquivo(char* nome_arquivo)
         ind += line[i];
         i++;
       }
-      ind += '\0'
+      ind += '-';
       i++;
 
       while(line[i] != '|')
@@ -251,7 +247,7 @@ int tree::ler_arquivo(char* nome_arquivo)
         tipo += line[i];
         i++;
       }
-      i++
+      i++;
 
       while(line[i] != '\n')
       {
@@ -259,22 +255,23 @@ int tree::ler_arquivo(char* nome_arquivo)
         i++;
       }
 
-      report = t->decodifica_nodes(ind,tipo,frase);
+      report = decodifica_nodes(ind,tipo,frase);
 
       // Houve erro
       if(report == 0)
       {
+        cout << "arvore.cpp:266 Erro na funcao decodifica_nodes" << endl;
         return 0;
       }
+
     }
     myfile.close();
-
     return 1;
   }
 
   else
   {
-    cout << "Unable to open file"; 
+    cout << "Unable to open file"<< endl; 
 
     // Houve erro
     return 0;
@@ -288,16 +285,36 @@ int tree::decodifica_nodes(std::string ind_entrada,
                             std::string tipo_entrada,
                              std::string frase_entrada)
 {
-  // Se a arvore é inicializada
-  if(current != NULL && ind_entrada != "0\0")
-  {
-    // O current sempre partirá do root
     current = root;
     node* prox;
     int i = 2;
     Opcao opcao_entrada;
     TipoFrase tipo_convertido;
 
+    // Determinar tipo no insert
+    if(tipo_entrada == "resposta")
+    {
+      tipo_convertido = TipoFrase::resposta;
+    }
+
+    else if(tipo_entrada == "pergunta")
+    {
+      tipo_convertido = TipoFrase::pergunta;
+    }
+
+    else
+    {
+
+      // Houve erro
+      cout << "arvore.cpp:311 tipo convertido não é nem resposta nem pergunta: "<< endl;
+      cout << tipo_entrada << endl;
+      cout << ind_entrada<< endl;
+      return 0;
+    }
+
+  // Se a arvore é inicializada
+  if(current != NULL && ind_entrada != "0-")
+  {
     // Para se determinar o proximo do current no início
 
     if(ind_entrada[1] == '0')
@@ -311,7 +328,7 @@ int tree::decodifica_nodes(std::string ind_entrada,
     }
 
     // Processo de determinacao do current pelo qual sera inserido o node
-    while(ind_entrada[i] != '\0')
+    while(ind_entrada[i] != '-')
     {
       if(ind_entrada[i] == '0')
       {
@@ -320,12 +337,13 @@ int tree::decodifica_nodes(std::string ind_entrada,
       }
       else if(ind_entrada[i] == '1')
       {
-        current = prox
+        current = prox;
         prox = current->Sim;
       }
-      else if(ind_entrada[i] != '0'|| ind_entrada[i] != '1'|| ind_entrada[i] '\0')
+      else if(ind_entrada[i] != '0'|| ind_entrada[i] != '1'|| ind_entrada[i] != '-')
       {
-        return 0
+        cout << "arvore.cpp:344  Leu um não 0 ou 1 ou /0" << endl;
+        return 0;
       }
       i++;
     }
@@ -344,40 +362,26 @@ int tree::decodifica_nodes(std::string ind_entrada,
     else
     {
       // Houve erro
+      cout << "arvore.cpp:364  Leu um não 0 ou 1" << endl;
       return 0;
     }
 
-    // Determinar tipo no insert
-    if(tipo_entrada == "resposta")
-    {
-      tipo_convertido = TipoFrase::resposta;
-    }
 
-    else if(tipo_entrada == "pergunta")
-    {
-      tipo_convertido = TipoFrase::pergunta;
-    }
-
-    else
-    {
-      // Houve erro
-      return 0;
-    }
-
-    insert(frase_entrada, opcao_entrada, tipo,current);
+    insert(frase_entrada, opcao_entrada, tipo_convertido, current);
 
     return 1;
   }
 
-  else if(ind_entrada == "\0")
+  else if(ind_entrada == "-")
   {
+    cout << "arvore.cpp:376  Leu um arquivo corrompido"<< endl;
     return 0;  
   }
 
   // Se for uma arvore nao criada cria-se um novo root
   else 
   {
-    if((current == root && ind_entrada == "0\0"))
+    if((current == root))
     {
       current = new node;
     } 
@@ -385,13 +389,14 @@ int tree::decodifica_nodes(std::string ind_entrada,
     else
     {
       // Houve erro
+      cout << "arvore.cpp:391  a raiz não é 0" << endl;
       return 0;
     }
     
     // Copia a frase de entrada para o Node
     current->frase = frase_entrada;
-    current->tipo = tipo_entrada;
-    current->ind = ind_entrada;
+    current->tipo = tipo_convertido;
+    current->ind = '0';
     current->Nao = NULL;
     current->Sim = NULL;
     root = current;
