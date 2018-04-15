@@ -168,11 +168,11 @@ int tree::save_game(char* nome_arquivo) //char* nome arquivo --
     myfile << frase << endl;
 
     myfile.close();
+    free(ind);
+    free(frase);
     save_game(nome_arquivo, save->Nao);
     save_game(nome_arquivo, save->Sim);
 
-    free(ind);
-    free(frase);
 
     return 1;
   }
