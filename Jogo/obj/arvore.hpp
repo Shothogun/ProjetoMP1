@@ -106,11 +106,16 @@ class tree
         todas as suas sub-arvores subjacentes.
     */
     ~tree();  
- 
+    /*! Insert
+
+        Função responsável por receber tanto a resposta quanto pergunta inserida pelo usuário.
+        Sua operação depende do tipo de conteúdo que ele irá colocar assim como aonde ele quer inserir,
+        informações solicitadas durante o jogo.
+
+    */
     void insert(std::string frase_entrada, 
           Opcao opcao_entrada,
           TipoFrase tipo_entrada); 
-    
  
     /*!  Funcao destruir a arvore inteira
  
@@ -125,16 +130,42 @@ class tree
         de uma pergunta que a ele nao faz sentido. No caso,
         ele chama a funcao destroy_tree private com o filho do current como parametro.
         Se a pergunta eliminada é à direita, a sub-árvore filho sim é eliminada;
-        caso contrário, a sub-àrvore nao.
+        caso contrário, a sub-árvore nao.
     */
     void eliminate(Opcao opcao_usuario);
+
+    /*! Funcao salvar jogo
+        
+        Ao ser chamado, ele grava todas as informações referentes ao jogo em um
+        arquivo txt, que pode ser recuperado depois. Recebe como parametro o nome do
+        jogo que foi salvo.
+    */
+    int save_game(char* nome_arquivo);
+
+    /*! Funcao ler arquivo
+        
+        Ele é uma funcao que lê o arquivo .txt e decodifica suas informações
+        para formar a árvore. Dentro dele, ele chama a função decodifica_nodes.
+        \sa decodifica_nodes()
+    */
+    int ler_arquivo(char* nome_arquivo);
+
+    /*! Funcao decodifica nodes
+
+        Essa função lê os dados do arquivo e interpreta, formando 
+        a árvore que será usada no jogo.
+
+    */
+    int decodifica_nodes(std::string ind_entrada,
+                         std::string tipo_entrada,
+                         std::string frase_entrada);
  
     // ----------------------- Test functions-------------------------------// 
  
     node* return_root();
     node* return_current();
     std::string return_root_frase();
-    void set_current(uint i);
+    void set_current(int i);
     void pre_order_printing();
 
     /*! Node current(atual)
@@ -145,7 +176,6 @@ class tree
     node_ponteiro current;
 
  
- 
   private:
     void insert(std::string frase_entrada, 
                 Opcao opcao_entrada,
@@ -153,7 +183,7 @@ class tree
                 node *leaf);
     void destroy_tree(node *leaf);
     void pre_order_printing(node* show_node);
-
+    void save_game(char* nome_arquivo, node* save);
     
     /*! Node raiz
         Indica a primeira pergunta do jogo.

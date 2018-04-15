@@ -150,6 +150,12 @@ class tree
     */
     int ler_arquivo(char* nome_arquivo);
 
+    /*! Funcao decodifica nodes
+
+        Essa função lê os dados do arquivo e interpreta, formando 
+        a árvore que será usada no jogo.
+
+    */
     int decodifica_nodes(std::string ind_entrada,
                          std::string tipo_entrada,
                          std::string frase_entrada);
