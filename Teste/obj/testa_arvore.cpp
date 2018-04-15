@@ -932,8 +932,36 @@ TEST_CASE("Decodificar o arquivo em arvore", "[arvore]")
 TEST_CASE("Ler o arquivo", "[arvore]")
 {
 	tree* outro_jogo = new tree();
+	int report = 1;
+	
 	int flag = outro_jogo->ler_arquivo("testar.txt");
+
 	REQUIRE(flag == 1);
 
 	outro_jogo->save_game("outro_jogo.txt");
+
+	ifstream myfile1("testar.txt");
+	ifstream myfile2("outro_jogo.txt");
+
+	string line_1;
+	string line_2;
+
+	if(myfile1.is_open() && myfile2.is_open())
+  {
+  	while ( getline (myfile1,line_1) && getline (myfile2,line_2))
+    {
+  		if(line_1 != line_2)
+  		{
+  			report = 0;
+  		}
+    }
+    myfile1.close();
+    myfile2.close();
+  }
+
+  else cout << "Unable to open file"; 
+
+  REQUIRE(report == 1);
+
+  delete outro_jogo;
 }
