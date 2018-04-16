@@ -1,3 +1,5 @@
 0|pergunta|É um ser vivo?
 00|resposta|prego
-01|resposta|ovelha
+01|pergunta|ele fala?
+010|resposta|ovelha
+011|resposta|humano

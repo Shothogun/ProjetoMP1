@@ -1,0 +1,5 @@
+0|pergunta|É um ser vivo?
+00|resposta|martelo
+01|pergunta|Eh um mamifero?
+010|resposta|cobra
+011|resposta|humano

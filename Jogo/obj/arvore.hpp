@@ -168,10 +168,28 @@ class tree
  
     // ----------------------- Test functions-------------------------------// 
  
+    /*! Funcao que retorna o node raiz
+    */
     node* return_root();
+
+    /*! Funcao que retorna o node current
+    */
     node* return_current();
+
+    /*! Retorna a frase do root
+    */
     std::string return_root_frase();
+
+    /*! Funcao usada para o processo de teste
+
+        Ele coloca o current no seu filho à direita
+    */
     void set_current(int i);
+
+    /*! Funcao usada para o processo de teste
+
+        Ele printa a árvore na forma transversal pre-order
+    */
     void pre_order_printing();
 
     /*! Node current(atual)
