@@ -71,7 +71,7 @@ int main()
 
       else if( resposta == 'D')
       {
-        if(Jogo->current == Jogo->return_root())
+        if(prox == Jogo->return_root())
         {
           cout << "Comando invalido. Nao se pode tirar a primeira pergunta" << endl;
           cout << "(҂⌣̀_⌣́)";
@@ -93,14 +93,20 @@ int main()
             if(opcao_jogador == Opcao::sim)
             {
               cout << "que responde sim" << endl;
+              getchar();
             }
             else
             {
               cout << "que responde não" << endl;
+              getchar();
             }
 
             getline (cin,resposta_alternativa);
             Jogo->insert(resposta_alternativa, opcao_jogador, TipoFrase::resposta);
+            cout << " ╭( ･ㅂ･)و Obrigado jogar! Foi bom jogar com voce!(♥ω♥ ) ~♪" << endl;
+            Jogo->save_game(nome);
+
+            return 0;
           }
 
           else if (resposta == 'N')
@@ -127,14 +133,21 @@ int main()
               if(opcao_jogador == Opcao::sim)
               {
                 cout << "que responde sim" << endl;
+                getchar();
               }
               else
               {
                 cout << "que responde não" << endl;
+                getchar();
               }
 
               getline (cin,resposta_alternativa);
               Jogo->insert(resposta_alternativa, opcao_jogador, TipoFrase::resposta);
+              cout << " ╭( ･ㅂ･)و Obrigado jogar! Foi bom jogar com voce!(♥ω♥ ) ~♪" << endl;
+              Jogo->save_game(nome);
+
+              return 0;
+
             }
 
             else if (confirmacao == 'N')
@@ -301,7 +314,7 @@ int main()
 
       else if( resposta == 'D')
       {
-        if(Jogo->current == Jogo->return_root())
+        if(prox == Jogo->return_root())
         {
           cout << "Comando invalido. Nao se pode tirar a primeira pergunta (҂⌣̀_⌣́)" << endl;
         }
@@ -320,14 +333,20 @@ int main()
             if(opcao_jogador == Opcao::sim)
             {
               cout << "que responde sim" << endl;
+              getchar();
             }
             else
             {
               cout << "que responde não" << endl;
+              getchar();
             }
 
             getline (cin,resposta_alternativa);
             Jogo->insert(resposta_alternativa, opcao_jogador, TipoFrase::resposta);
+            cout << " ╭( ･ㅂ･)و Obrigado jogar! Foi bom jogar com voce!(♥ω♥ ) ~♪" << endl;
+            Jogo->save_game(nome);
+
+            return 0;
           }
 
           else if (resposta == 'N')
@@ -353,14 +372,21 @@ int main()
               if(opcao_jogador == Opcao::sim)
               {
                 cout << "que responde sim" << endl;
+                getchar();
               }
               else
               {
                 cout << "que responde não" << endl;
+                getchar();
               }
 
               getline (cin,resposta_alternativa);
               Jogo->insert(resposta_alternativa, opcao_jogador, TipoFrase::resposta);
+              cout << " ╭( ･ㅂ･)و Obrigado jogar! Foi bom jogar com voce!(♥ω♥ ) ~♪" << endl;
+              Jogo->save_game(nome);
+              
+              return 0;
+
             }
 
             else if (confirmacao == 'N')

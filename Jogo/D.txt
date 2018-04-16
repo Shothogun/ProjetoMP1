@@ -1,0 +1,3 @@
+0|pergunta|É um ser vivo?
+00|resposta|prego
+01|resposta|ovelha
