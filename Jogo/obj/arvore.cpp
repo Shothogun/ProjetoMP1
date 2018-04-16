@@ -241,7 +241,6 @@ int tree::ler_arquivo(char* nome_arquivo)
       }
       ind += '-';
       i++;
-
       while(line[i] != '|')
       {
         tipo += line[i];
@@ -249,12 +248,12 @@ int tree::ler_arquivo(char* nome_arquivo)
       }
       i++;
 
-      while(line[i] != '\n')
+      while(line[i] != '\0')
       {
         frase += line[i];
         i++;
       }
-
+      
       report = decodifica_nodes(ind,tipo,frase);
 
       // Houve erro
@@ -263,7 +262,6 @@ int tree::ler_arquivo(char* nome_arquivo)
         cout << "arvore.cpp:266 Erro na funcao decodifica_nodes" << endl;
         return 0;
       }
-
     }
     myfile.close();
     return 1;
@@ -405,6 +403,10 @@ int tree::decodifica_nodes(std::string ind_entrada,
   } 
 }
 
+void tree::reset_current()
+{
+  current = root;
+}
  
 // Test functions
  

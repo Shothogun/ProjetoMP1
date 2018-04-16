@@ -159,6 +159,12 @@ class tree
     int decodifica_nodes(std::string ind_entrada,
                          std::string tipo_entrada,
                          std::string frase_entrada);
+
+    /*!  Funcao resetar current
+      
+          O node current é posto novamente na raiz da arvore no final do jogo
+    */
+    void reset_current();
  
     // ----------------------- Test functions-------------------------------// 
  

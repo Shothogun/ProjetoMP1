@@ -405,6 +405,10 @@ int tree::decodifica_nodes(std::string ind_entrada,
   } 
 }
 
+void tree::reset_current()
+{
+  current = root;
+}
  
 // Test functions
  
