@@ -14,5 +14,5 @@ Para cada pergunta, deve-se responder com S, para sim; e N, para não. O program
 
 Caso o jogo erre a resposta, o usuário deve inserir a resposta correta e uma pergunta que diferencie o objeto adivinhado pelo programa à resposta imaginada pelo usuário.
 
-O log está disponível no link:
+O log está disponível no link: https://github.com/Shothogun/ProjetoMP1
 
