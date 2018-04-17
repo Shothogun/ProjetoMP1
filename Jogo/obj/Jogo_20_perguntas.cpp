@@ -9,7 +9,7 @@ int main()
   // Selecao de comandos 
   cout << "Bem vindo!" << endl;
   cout << "( ´ ▽ ` )ﾉ" << endl;
-  cout << "Regras............................."<< endl;
+  cout << "Regras no README"<< endl;
   cout << "Deseja iniciar um novo jogo(N) ou um salvo(L)? Se for um salvo, o jogo será modificado após seu termino." << endl;
   cout << "Digite:";
   cin >> Comando;

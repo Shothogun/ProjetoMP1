@@ -1,0 +1,66 @@
+\hypertarget{structnode}{}\section{node Struct Reference}
+\label{structnode}\index{node@{node}}
+
+
+{\ttfamily \#include $<$arvore.\+hpp$>$}
+
+
+
+Collaboration diagram for node\+:
+% FIG 0
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{structnode_a8ca4b6354070eebc529bb735a854633c}{ind}
+\item 
+\hyperlink{classTipoFrase}{Tipo\+Frase} \hyperlink{structnode_a2e3af258fb8504ff37c72c1e01f29d77}{tipo}
+\item 
+std\+::string \hyperlink{structnode_a2425ade73608446348e46ce4c493946d}{frase}
+\item 
+\hyperlink{structchild}{child} \hyperlink{structnode_ae78a3ebfede2b9f24f4ee94800006882}{Nao}
+\item 
+\hyperlink{structchild}{child} \hyperlink{structnode_a88c6f121ba530956bbdd5d90340117cf}{Sim}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Entidade tipo node(Nó)
+
+Entidade que representa a frase que compora o jogo. Ele é responsável tanto por armazenar o que o usuario insere quanto interagir com ele conforme ele joga e preenche a arvore.
+
+Segue-\/se a seguinte estrutura\+: um node filho a esquerda(um nao) é expresso por meio do indice do pai mais o caracter \textquotesingle{}0\textquotesingle{}; enquanto a direita, por meio do indice do pai mais o caracter \textquotesingle{}1\textquotesingle{}. A raiz é sempre representato pelo \textquotesingle{}0\textquotesingle{}. Ou seja, o filho a esquerda da raiz sera \char`\"{}00\char`\"{}, que por sua vez, seu filho a direita sera \char`\"{}001\char`\"{}. 
+
+\subsection{Member Data Documentation}
+\index{node@{node}!frase@{frase}}
+\index{frase@{frase}!node@{node}}
+\subsubsection[{\texorpdfstring{frase}{frase}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string node\+::frase}\hypertarget{structnode_a2425ade73608446348e46ce4c493946d}{}\label{structnode_a2425ade73608446348e46ce4c493946d}
+Frase
+
+Expressa a frase que ela ira expressar ao usuario, ou recebera dele. \index{node@{node}!ind@{ind}}
+\index{ind@{ind}!node@{node}}
+\subsubsection[{\texorpdfstring{ind}{ind}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string node\+::ind}\hypertarget{structnode_a8ca4b6354070eebc529bb735a854633c}{}\label{structnode_a8ca4b6354070eebc529bb735a854633c}
+Indice do node
+
+Segue-\/se a seguinte estrutura\+: um node filho a esquerda(um nao) é expresso por meio do indice do pai mais o caracter \textquotesingle{}0\textquotesingle{}; enquanto a direita, por meio do indice do pai mais o caracter \textquotesingle{}1\textquotesingle{}. \begin{DoxySeeAlso}{See also}
+\hyperlink{structnode}{node} 
+\end{DoxySeeAlso}
+\index{node@{node}!Nao@{Nao}}
+\index{Nao@{Nao}!node@{node}}
+\subsubsection[{\texorpdfstring{Nao}{Nao}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf child} node\+::\+Nao}\hypertarget{structnode_ae78a3ebfede2b9f24f4ee94800006882}{}\label{structnode_ae78a3ebfede2b9f24f4ee94800006882}
+Node filho tipo nao
+
+Presente na arvore como o filho a esquerda. \index{node@{node}!Sim@{Sim}}
+\index{Sim@{Sim}!node@{node}}
+\subsubsection[{\texorpdfstring{Sim}{Sim}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf child} node\+::\+Sim}\hypertarget{structnode_a88c6f121ba530956bbdd5d90340117cf}{}\label{structnode_a88c6f121ba530956bbdd5d90340117cf}
+Node filho tipo sim
+
+Presente na arvore como o filho a direita. \index{node@{node}!tipo@{tipo}}
+\index{tipo@{tipo}!node@{node}}
+\subsubsection[{\texorpdfstring{tipo}{tipo}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tipo\+Frase} node\+::tipo}\hypertarget{structnode_a2e3af258fb8504ff37c72c1e01f29d77}{}\label{structnode_a2e3af258fb8504ff37c72c1e01f29d77}
+Tipo de frase contida no node
+
+Classifica-\/se a frase quanto a sua natureza\+: Interrogativa ou afirmarmativa, no caso, o objeto resposta da arvore. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+arvore.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,201 @@
+\hypertarget{classtree}{}\section{tree Class Reference}
+\label{classtree}\index{tree@{tree}}
+
+
+{\ttfamily \#include $<$arvore.\+hpp$>$}
+
+
+
+Collaboration diagram for tree\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtree_a9f2a566ac2710fafc31232456780e82d}{tree} ()
+\item 
+\hyperlink{classtree_a05f3faa3c9a8f6fed237e2d0f6172244}{$\sim$tree} ()
+\item 
+void \hyperlink{classtree_a9b3882771e4d90c328d621397e3479bf}{insert} (std\+::string frase\+\_\+entrada, \hyperlink{classOpcao}{Opcao} opcao\+\_\+entrada, \hyperlink{classTipoFrase}{Tipo\+Frase} tipo\+\_\+entrada)
+\item 
+void \hyperlink{classtree_a523172b004801388b1e6920d6d984347}{destroy\+\_\+tree} ()
+\item 
+void \hyperlink{classtree_a1542d5e7f6dc077a0f79e5f7a2a0f452}{eliminate} (\hyperlink{classOpcao}{Opcao} opcao\+\_\+usuario)
+\item 
+int \hyperlink{classtree_a0b9f0e908d4486a45645dac81d0e5c94}{save\+\_\+game} (char $\ast$nome\+\_\+arquivo)
+\item 
+int \hyperlink{classtree_aad4c0668e17990cac8d29a5ab754db6b}{ler\+\_\+arquivo} (char $\ast$nome\+\_\+arquivo)
+\item 
+int \hyperlink{classtree_a4b8cfb3b938f2289f5a8c44d96f69920}{decodifica\+\_\+nodes} (std\+::string ind\+\_\+entrada, std\+::string tipo\+\_\+entrada, std\+::string frase\+\_\+entrada)
+\item 
+void \hyperlink{classtree_aa29977d9532142ac24c09b8c91e513aa}{reset\+\_\+current} ()
+\item 
+\hyperlink{structnode}{node} $\ast$ \hyperlink{classtree_a4fe0fb0307507a56395a377d2166d4d2}{return\+\_\+root} ()
+\item 
+\hyperlink{structnode}{node} $\ast$ \hyperlink{classtree_a411f2ea2eee1c9849700d543820886b2}{return\+\_\+current} ()
+\item 
+std\+::string \hyperlink{classtree_a13371a9c50e062c16985d66a36f4b0a8}{return\+\_\+root\+\_\+frase} ()
+\item 
+void \hyperlink{classtree_a996a9842aeda231f0554d7e49e703cc9}{set\+\_\+current} (int i)
+\item 
+void \hyperlink{classtree_a7e650b17f6c1e31a527ae3e1b2f3861f}{pre\+\_\+order\+\_\+printing} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structnode__ponteiro}{node\+\_\+ponteiro} \hyperlink{classtree_a8e4a9bb8cd65cf2c4c781e4be86b6f0d}{current}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Entidade da arvore que compora o jogo
+
+Dotado de atributos relativo\+: aos dados interessantes ao funcionamento e interface do jogo; e aos dados que possibilitarao sua implementacao 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{tree@{tree}!tree@{tree}}
+\index{tree@{tree}!tree@{tree}}
+\subsubsection[{\texorpdfstring{tree()}{tree()}}]{\setlength{\rightskip}{0pt plus 5cm}tree\+::tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a9f2a566ac2710fafc31232456780e82d}{}\label{classtree_a9f2a566ac2710fafc31232456780e82d}
+Constructor
+
+Inicializa a arvore com a raiz no N\+U\+LL e o node current como a raiz. \begin{DoxySeeAlso}{See also}
+\hyperlink{classtree_a8e4a9bb8cd65cf2c4c781e4be86b6f0d}{tree\+::current} 
+\end{DoxySeeAlso}
+\index{tree@{tree}!````~tree@{$\sim$tree}}
+\index{````~tree@{$\sim$tree}!tree@{tree}}
+\subsubsection[{\texorpdfstring{$\sim$tree()}{~tree()}}]{\setlength{\rightskip}{0pt plus 5cm}tree\+::$\sim$tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a05f3faa3c9a8f6fed237e2d0f6172244}{}\label{classtree_a05f3faa3c9a8f6fed237e2d0f6172244}
+Destructor
+
+Elimina a arvore desde a raiz ate todas as suas sub-\/arvores subjacentes. 
+
+\subsection{Member Function Documentation}
+\index{tree@{tree}!decodifica\+\_\+nodes@{decodifica\+\_\+nodes}}
+\index{decodifica\+\_\+nodes@{decodifica\+\_\+nodes}!tree@{tree}}
+\subsubsection[{\texorpdfstring{decodifica\+\_\+nodes(std\+::string ind\+\_\+entrada, std\+::string tipo\+\_\+entrada, std\+::string frase\+\_\+entrada)}{decodifica_nodes(std::string ind_entrada, std::string tipo_entrada, std::string frase_entrada)}}]{\setlength{\rightskip}{0pt plus 5cm}int tree\+::decodifica\+\_\+nodes (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{ind\+\_\+entrada, }
+\item[{std\+::string}]{tipo\+\_\+entrada, }
+\item[{std\+::string}]{frase\+\_\+entrada}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a4b8cfb3b938f2289f5a8c44d96f69920}{}\label{classtree_a4b8cfb3b938f2289f5a8c44d96f69920}
+Funcao decodifica nodes
+
+Essa função lê os dados do arquivo e interpreta, formando a árvore que será usada no jogo. \index{tree@{tree}!destroy\+\_\+tree@{destroy\+\_\+tree}}
+\index{destroy\+\_\+tree@{destroy\+\_\+tree}!tree@{tree}}
+\subsubsection[{\texorpdfstring{destroy\+\_\+tree()}{destroy_tree()}}]{\setlength{\rightskip}{0pt plus 5cm}void tree\+::destroy\+\_\+tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a523172b004801388b1e6920d6d984347}{}\label{classtree_a523172b004801388b1e6920d6d984347}
+Funcao destruir a arvore inteira
+
+Invocada ao ser encerrado o jogo. Chama a funcao destroy\+\_\+tree private com a raiz como parametro. \index{tree@{tree}!eliminate@{eliminate}}
+\index{eliminate@{eliminate}!tree@{tree}}
+\subsubsection[{\texorpdfstring{eliminate(\+Opcao opcao\+\_\+usuario)}{eliminate(Opcao opcao_usuario)}}]{\setlength{\rightskip}{0pt plus 5cm}void tree\+::eliminate (
+\begin{DoxyParamCaption}
+\item[{{\bf Opcao}}]{opcao\+\_\+usuario}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a1542d5e7f6dc077a0f79e5f7a2a0f452}{}\label{classtree_a1542d5e7f6dc077a0f79e5f7a2a0f452}
+Funcao Eliminar a pergunta
+
+Executado quando o usuario solicitar o retiro de uma pergunta que a ele nao faz sentido. No caso, ele chama a funcao destroy\+\_\+tree private com o filho do current como parametro. Se a pergunta eliminada é à direita, a sub-\/árvore filho sim é eliminada; caso contrário, a sub-\/árvore nao. \index{tree@{tree}!insert@{insert}}
+\index{insert@{insert}!tree@{tree}}
+\subsubsection[{\texorpdfstring{insert(std\+::string frase\+\_\+entrada, Opcao opcao\+\_\+entrada, Tipo\+Frase tipo\+\_\+entrada)}{insert(std::string frase_entrada, Opcao opcao_entrada, TipoFrase tipo_entrada)}}]{\setlength{\rightskip}{0pt plus 5cm}void tree\+::insert (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{frase\+\_\+entrada, }
+\item[{{\bf Opcao}}]{opcao\+\_\+entrada, }
+\item[{{\bf Tipo\+Frase}}]{tipo\+\_\+entrada}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a9b3882771e4d90c328d621397e3479bf}{}\label{classtree_a9b3882771e4d90c328d621397e3479bf}
+Insert
+
+Função responsável por receber tanto a resposta quanto pergunta inserida pelo usuário. Sua operação depende do tipo de conteúdo que ele irá colocar assim como aonde ele quer inserir, informações solicitadas durante o jogo. \index{tree@{tree}!ler\+\_\+arquivo@{ler\+\_\+arquivo}}
+\index{ler\+\_\+arquivo@{ler\+\_\+arquivo}!tree@{tree}}
+\subsubsection[{\texorpdfstring{ler\+\_\+arquivo(char $\ast$nome\+\_\+arquivo)}{ler_arquivo(char *nome_arquivo)}}]{\setlength{\rightskip}{0pt plus 5cm}int tree\+::ler\+\_\+arquivo (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{nome\+\_\+arquivo}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_aad4c0668e17990cac8d29a5ab754db6b}{}\label{classtree_aad4c0668e17990cac8d29a5ab754db6b}
+Funcao ler arquivo
+
+Ele é uma funcao que lê o arquivo .txt e decodifica suas informações para formar a árvore. Dentro dele, ele chama a função decodifica\+\_\+nodes. \begin{DoxySeeAlso}{See also}
+\hyperlink{classtree_a4b8cfb3b938f2289f5a8c44d96f69920}{decodifica\+\_\+nodes()} 
+\end{DoxySeeAlso}
+\index{tree@{tree}!pre\+\_\+order\+\_\+printing@{pre\+\_\+order\+\_\+printing}}
+\index{pre\+\_\+order\+\_\+printing@{pre\+\_\+order\+\_\+printing}!tree@{tree}}
+\subsubsection[{\texorpdfstring{pre\+\_\+order\+\_\+printing()}{pre_order_printing()}}]{\setlength{\rightskip}{0pt plus 5cm}void tree\+::pre\+\_\+order\+\_\+printing (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a7e650b17f6c1e31a527ae3e1b2f3861f}{}\label{classtree_a7e650b17f6c1e31a527ae3e1b2f3861f}
+Funcao usada para o processo de teste
+
+Ele printa a árvore na forma transversal pre-\/order \index{tree@{tree}!reset\+\_\+current@{reset\+\_\+current}}
+\index{reset\+\_\+current@{reset\+\_\+current}!tree@{tree}}
+\subsubsection[{\texorpdfstring{reset\+\_\+current()}{reset_current()}}]{\setlength{\rightskip}{0pt plus 5cm}void tree\+::reset\+\_\+current (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_aa29977d9532142ac24c09b8c91e513aa}{}\label{classtree_aa29977d9532142ac24c09b8c91e513aa}
+Funcao resetar current
+
+O node current é posto novamente na raiz da arvore no final do jogo \index{tree@{tree}!return\+\_\+current@{return\+\_\+current}}
+\index{return\+\_\+current@{return\+\_\+current}!tree@{tree}}
+\subsubsection[{\texorpdfstring{return\+\_\+current()}{return_current()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf node} $\ast$ tree\+::return\+\_\+current (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a411f2ea2eee1c9849700d543820886b2}{}\label{classtree_a411f2ea2eee1c9849700d543820886b2}
+Funcao que retorna o node current \index{tree@{tree}!return\+\_\+root@{return\+\_\+root}}
+\index{return\+\_\+root@{return\+\_\+root}!tree@{tree}}
+\subsubsection[{\texorpdfstring{return\+\_\+root()}{return_root()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf node} $\ast$ tree\+::return\+\_\+root (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a4fe0fb0307507a56395a377d2166d4d2}{}\label{classtree_a4fe0fb0307507a56395a377d2166d4d2}
+Funcao que retorna o node raiz \index{tree@{tree}!return\+\_\+root\+\_\+frase@{return\+\_\+root\+\_\+frase}}
+\index{return\+\_\+root\+\_\+frase@{return\+\_\+root\+\_\+frase}!tree@{tree}}
+\subsubsection[{\texorpdfstring{return\+\_\+root\+\_\+frase()}{return_root_frase()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string tree\+::return\+\_\+root\+\_\+frase (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a13371a9c50e062c16985d66a36f4b0a8}{}\label{classtree_a13371a9c50e062c16985d66a36f4b0a8}
+Retorna a frase do root \index{tree@{tree}!save\+\_\+game@{save\+\_\+game}}
+\index{save\+\_\+game@{save\+\_\+game}!tree@{tree}}
+\subsubsection[{\texorpdfstring{save\+\_\+game(char $\ast$nome\+\_\+arquivo)}{save_game(char *nome_arquivo)}}]{\setlength{\rightskip}{0pt plus 5cm}int tree\+::save\+\_\+game (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{nome\+\_\+arquivo}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a0b9f0e908d4486a45645dac81d0e5c94}{}\label{classtree_a0b9f0e908d4486a45645dac81d0e5c94}
+Funcao salvar jogo
+
+Ao ser chamado, ele grava todas as informações referentes ao jogo em um arquivo txt, que pode ser recuperado depois. Recebe como parametro o nome do jogo que foi salvo. \index{tree@{tree}!set\+\_\+current@{set\+\_\+current}}
+\index{set\+\_\+current@{set\+\_\+current}!tree@{tree}}
+\subsubsection[{\texorpdfstring{set\+\_\+current(int i)}{set_current(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}void tree\+::set\+\_\+current (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}\hypertarget{classtree_a996a9842aeda231f0554d7e49e703cc9}{}\label{classtree_a996a9842aeda231f0554d7e49e703cc9}
+Funcao usada para o processo de teste
+
+Ele coloca o current no seu filho à direita 
+
+\subsection{Member Data Documentation}
+\index{tree@{tree}!current@{current}}
+\index{current@{current}!tree@{tree}}
+\subsubsection[{\texorpdfstring{current}{current}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf node\+\_\+ponteiro} tree\+::current}\hypertarget{classtree_a8e4a9bb8cd65cf2c4c781e4be86b6f0d}{}\label{classtree_a8e4a9bb8cd65cf2c4c781e4be86b6f0d}
+Node current(atual)
+
+Indica em qual parte da arvore o jogador estara durante o jogo 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+arvore.\+hpp\item 
+arvore.\+cpp\end{DoxyCompactItemize}

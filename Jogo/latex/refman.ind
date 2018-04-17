@@ -1,0 +1,86 @@
+\begin{theindex}
+
+  \item {$\sim$tree}
+    \subitem {tree}, \hyperpage{5}
+
+  \indexspace
+
+  \item {child}, \hyperpage{3}
+  \item {current}
+    \subitem {tree}, \hyperpage{7}
+
+  \indexspace
+
+  \item {decodifica\+\_\+nodes}
+    \subitem {tree}, \hyperpage{6}
+  \item {destroy\+\_\+tree}
+    \subitem {tree}, \hyperpage{6}
+
+  \indexspace
+
+  \item {eliminate}
+    \subitem {tree}, \hyperpage{6}
+
+  \indexspace
+
+  \item {insert}
+    \subitem {tree}, \hyperpage{6}
+
+  \indexspace
+
+  \item {ler\+\_\+arquivo}
+    \subitem {tree}, \hyperpage{6}
+
+  \indexspace
+
+  \item {node}, \hyperpage{3}
+  \item {node\+\_\+ponteiro}, \hyperpage{3}
+
+  \indexspace
+
+  \item {Opcao}, \hyperpage{4}
+
+  \indexspace
+
+  \item {pre\+\_\+order\+\_\+printing}
+    \subitem {tree}, \hyperpage{6}
+
+  \indexspace
+
+  \item {reset\+\_\+current}
+    \subitem {tree}, \hyperpage{6}
+  \item {return\+\_\+current}
+    \subitem {tree}, \hyperpage{7}
+  \item {return\+\_\+root}
+    \subitem {tree}, \hyperpage{7}
+  \item {return\+\_\+root\+\_\+frase}
+    \subitem {tree}, \hyperpage{7}
+
+  \indexspace
+
+  \item {save\+\_\+game}
+    \subitem {tree}, \hyperpage{7}
+  \item {set\+\_\+current}
+    \subitem {tree}, \hyperpage{7}
+
+  \indexspace
+
+  \item {Tipo\+Frase}, \hyperpage{4}
+  \item {tree}, \hyperpage{4}
+    \subitem {$\sim$tree}, \hyperpage{5}
+    \subitem {current}, \hyperpage{7}
+    \subitem {decodifica\+\_\+nodes}, \hyperpage{6}
+    \subitem {destroy\+\_\+tree}, \hyperpage{6}
+    \subitem {eliminate}, \hyperpage{6}
+    \subitem {insert}, \hyperpage{6}
+    \subitem {ler\+\_\+arquivo}, \hyperpage{6}
+    \subitem {pre\+\_\+order\+\_\+printing}, \hyperpage{6}
+    \subitem {reset\+\_\+current}, \hyperpage{6}
+    \subitem {return\+\_\+current}, \hyperpage{7}
+    \subitem {return\+\_\+root}, \hyperpage{7}
+    \subitem {return\+\_\+root\+\_\+frase}, \hyperpage{7}
+    \subitem {save\+\_\+game}, \hyperpage{7}
+    \subitem {set\+\_\+current}, \hyperpage{7}
+    \subitem {tree}, \hyperpage{5}
+
+\end{theindex}
