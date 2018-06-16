@@ -1,6 +1,8 @@
 0|pergunta|É um ser vivo?
 00|pergunta|Ele corta?
 000|resposta|martelo
+0000|resposta|Pedra
+0001|resposta|martelo
 001|resposta|serra
 01|pergunta|Ele eh mamifero?
 010|resposta|cobra

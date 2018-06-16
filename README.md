@@ -12,7 +12,7 @@ Comandos de jogo
 
 Para cada pergunta, deve-se responder com S, para sim; e N, para não. O programa não funcionará corretamente se a resposta para algum comando diferente. Caso a pergunta não faça sentido ao usuário, ele tem a opção de deletar a pergunta com o comando D; substituindo ela por uma resposta à pergunta anterior à apagada. Isso implicará no apagamento de todas as perguntas e respostas vinculadas à ela.O comando de deleção não será possível a primeira pergunta, uma vez que ela inicia o jogo e todas as perguntas e respostas dependem dela.
 
-Caso o jogo erre a resposta, o usuário deve inserir a resposta correta e uma pergunta que diferencie o objeto adivinhado pelo programa à resposta imaginada pelo usuário.
+Caso o jogo erre a resposta, o usuário deve inserir a resposta correta e uma pergunta que diferencie o objeto adivinhado pelo programa à resposta imaginada pelo usuário( Não é permitido inserir o caractere |)
 
 O log está disponível no link: https://github.com/Shothogun/ProjetoMP1
 
